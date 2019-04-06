@@ -104,3 +104,7 @@ summary(model)
 
 # chi-square:  χ² ( df=30 ) = 34.56062,  p = 0.2589784
 # very similar to lavaan and psychonetrics
+
+# Modification indices:
+MIs <- mxMI(model)
+sort(MIs$MI, decreasing = TRUE)[1:10]
