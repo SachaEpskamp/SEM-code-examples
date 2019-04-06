@@ -1,0 +1,245 @@
+Mplus VERSION 8 (Mac)
+MUTHEN & MUTHEN
+04/06/2019   1:35 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:	Star Wars model
+  DATA:	FILE IS StarWars_Mplus.csv; ! Note that this data has no first row with variable nam
+  VARIABLE:	NAMES ARE Q1-Q10;
+  MODEL:	
+
+  ! Factor Loadings:
+  Prequels BY Q2-Q4 Q1;
+  Original BY Q5-Q7 Q1;
+  Sequels BY Q8-Q10 Q1;
+
+  ! Like lavaan, Mplus does a lot of things automatically, such as
+  ! adding (residual) variances and fixing the first loading to 1
+  ! Variances can further be specified with the WITH command. For
+  ! example, this adds the residual variance:
+  Q4 WITH Q10;
+
+  OUTPUT: MODINDICES (8); ! This adds modification indices above 8!
+
+
+
+*** WARNING
+  Input line exceeded 90 characters. Some input may be truncated.
+  DATA:	FILE IS StarWars_Mplus.csv; ! Note that this data has no first row with variable name
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+Star Wars model
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         271
+
+Number of dependent variables                                   10
+Number of independent variables                                  0
+Number of continuous latent variables                            3
+
+Observed dependent variables
+
+  Continuous
+   Q1          Q2          Q3          Q4          Q5          Q6
+   Q7          Q8          Q9          Q10
+
+Continuous latent variables
+   PREQUELS    ORIGINAL    SEQUELS
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  StarWars_Mplus.csv
+
+Input data format  FREE
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     Q1                    2.760       0.342       1.000   23.99%       1.000      2.000      2.000
+             271.000       2.094      -1.246       5.000   19.93%       3.000      4.000
+     Q2                    4.188      -1.289       1.000    3.69%       3.000      4.000      5.000
+             271.000       1.282       0.648       5.000   56.83%       5.000      5.000
+     Q3                    2.819       0.328       1.000   11.44%       2.000      2.000      3.000
+             271.000       1.263      -0.465       5.000   10.70%       3.000      4.000
+     Q4                    3.214      -0.146       1.000    8.49%       2.000      3.000      3.000
+             271.000       1.489      -1.033       5.000   16.61%       4.000      4.000
+     Q5                    2.435       0.686       1.000   22.51%       1.000      2.000      2.000
+             271.000       1.427      -0.431       5.000    8.12%       2.000      4.000
+     Q6                    2.686       0.468       1.000   16.61%       2.000      2.000      3.000
+             271.000       1.455      -0.559       5.000   12.18%       3.000      4.000
+     Q7                    2.996      -0.090       1.000   13.65%       2.000      3.000      3.000
+             271.000       1.494      -1.023       5.000   10.70%       3.000      4.000
+     Q8                    2.384       0.674       1.000   36.16%       1.000      2.000      2.000
+             271.000       1.919      -0.791       5.000   13.28%       2.000      4.000
+     Q9                    3.247       0.191       1.000    3.32%       2.000      3.000      3.000
+             271.000       1.072      -0.499       5.000   16.24%       3.000      4.000
+     Q10                   2.118       0.752       1.000   32.47%       1.000      2.000      2.000
+             271.000       1.049       0.116       5.000    2.95%       2.000      3.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       36
+
+Loglikelihood
+
+          H0 Value                       -4121.597
+          H1 Value                       -4109.062
+
+Information Criteria
+
+          Akaike (AIC)                    8315.195
+          Bayesian (BIC)                  8444.871
+          Sample-Size Adjusted BIC        8330.726
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             25.071
+          Degrees of Freedom                    29
+          P-Value                           0.6745
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.000
+          90 Percent C.I.                    0.000  0.038
+          Probability RMSEA <= .05           0.991
+
+CFI/TLI
+
+          CFI                                1.000
+          TLI                                1.016
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                            426.350
+          Degrees of Freedom                    45
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.032
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ PREQUELS BY
+    Q2                 1.000      0.000    999.000    999.000
+    Q3                 2.659      1.242      2.141      0.032
+    Q4                -1.422      0.592     -2.400      0.016
+    Q1                 0.569      0.457      1.246      0.213
+
+ ORIGINAL BY
+    Q5                 1.000      0.000    999.000    999.000
+    Q6                 1.643      0.244      6.724      0.000
+    Q7                 1.163      0.195      5.974      0.000
+    Q1                 1.740      0.400      4.356      0.000
+
+ SEQUELS  BY
+    Q8                 1.000      0.000    999.000    999.000
+    Q9                 0.171      0.091      1.887      0.059
+    Q10                0.710      0.118      6.001      0.000
+    Q1                 0.055      0.254      0.219      0.827
+
+ ORIGINAL WITH
+    PREQUELS           0.047      0.025      1.881      0.060
+
+ SEQUELS  WITH
+    PREQUELS           0.094      0.048      1.972      0.049
+    ORIGINAL           0.362      0.077      4.723      0.000
+
+ Q4       WITH
+    Q10               -0.211      0.069     -3.033      0.002
+
+ Intercepts
+    Q1                 2.760      0.088     31.402      0.000
+    Q2                 4.188      0.069     60.895      0.000
+    Q3                 2.819      0.068     41.304      0.000
+    Q4                 3.214      0.074     43.355      0.000
+    Q5                 2.435      0.073     33.566      0.000
+    Q6                 2.686      0.073     36.660      0.000
+    Q7                 2.996      0.074     40.349      0.000
+    Q8                 2.384      0.084     28.327      0.000
+    Q9                 3.247      0.063     51.637      0.000
+    Q10                2.118      0.062     34.049      0.000
+
+ Variances
+    PREQUELS           0.080      0.056      1.427      0.153
+    ORIGINAL           0.327      0.088      3.709      0.000
+    SEQUELS            0.746      0.175      4.270      0.000
+
+ Residual Variances
+    Q1                 0.905      0.127      7.145      0.000
+    Q2                 1.201      0.111     10.809      0.000
+    Q3                 0.694      0.246      2.822      0.005
+    Q4                 1.327      0.136      9.722      0.000
+    Q5                 1.099      0.103     10.672      0.000
+    Q6                 0.571      0.092      6.192      0.000
+    Q7                 1.051      0.102     10.280      0.000
+    Q8                 1.173      0.154      7.629      0.000
+    Q9                 1.050      0.091     11.510      0.000
+    Q10                0.673      0.083      8.133      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.154E-03
+       (ratio of smallest to largest eigenvalue)
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index     8.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+No modification indices above the minimum value.
+
+
+
+     Beginning Time:  13:35:43
+        Ending Time:  13:35:43
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2017 Muthen & Muthen

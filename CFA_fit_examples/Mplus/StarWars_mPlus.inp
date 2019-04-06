@@ -1,0 +1,17 @@
+TITLE:	Star Wars model
+DATA:	FILE IS StarWars_Mplus.csv; ! Note that this data has no first row with variable names...
+VARIABLE:	NAMES ARE Q1-Q10;
+MODEL:	
+
+! Factor Loadings:
+Prequels BY Q2-Q4 Q1;
+Original BY Q5-Q7 Q1;
+Sequels BY Q8-Q10 Q1;
+
+! Like lavaan, Mplus does a lot of things automatically, such as 
+! adding (residual) variances and fixing the first loading to 1
+! Variances can further be specified with the WITH command. For
+! example, this adds the residual variance:
+Q4 WITH Q10;
+
+OUTPUT: MODINDICES (8); ! This adds modification indices above 8!
