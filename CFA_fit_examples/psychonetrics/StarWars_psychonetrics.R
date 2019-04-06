@@ -123,3 +123,8 @@ rnm <- rnm %>% stepup
 
 # It will estimate the same model (with link Q10 - Q4) as above. In the case of only one partial correlation,
 # There is no difference between residual covariances (SEM) or residual partial correlations (RNM).
+
+
+# For more information on latent and residual network models, see:
+# Epskamp, S., Rhemtulla, M.T., & Borsboom, D. Generalized Network Psychometrics: Combining Network and Latent Variable Models 
+# (2017). Psychometrika. doi:10.1007/s11336-017-9557-x
