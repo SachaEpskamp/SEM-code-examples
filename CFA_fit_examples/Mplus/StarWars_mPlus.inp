@@ -14,4 +14,6 @@ Sequels BY Q8-Q10 Q1;
 ! example, this adds the residual variance:
 Q4 WITH Q10;
 
-OUTPUT: MODINDICES (8); ! This adds modification indices above 8!
+OUTPUT: 
+STANDARDIZED; ! This adds standardized parameters
+MODINDICES (8); ! This adds modification indices above 8!
