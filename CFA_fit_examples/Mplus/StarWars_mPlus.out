@@ -1,12 +1,12 @@
 Mplus VERSION 8 (Mac)
 MUTHEN & MUTHEN
-04/06/2019   2:07 PM
+04/06/2019   2:14 PM
 
 INPUT INSTRUCTIONS
 
   TITLE:	Star Wars model
   DATA:	FILE IS StarWars_Mplus.csv; ! Note that this data has no first row with variable nam
-  VARIABLE:	NAMES ARE Q1-Q10;
+  VARIABLE:	NAMES ARE Q1-Q13; USEVARIABLES ARE Q1-Q10;
   MODEL:	
 
   ! Factor Loadings:
@@ -438,8 +438,8 @@ No modification indices above the minimum value.
 
 
 
-     Beginning Time:  14:07:12
-        Ending Time:  14:07:12
+     Beginning Time:  14:14:36
+        Ending Time:  14:14:36
        Elapsed Time:  00:00:00
 
 

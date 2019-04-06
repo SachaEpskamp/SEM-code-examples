@@ -1,6 +1,6 @@
 TITLE:	Star Wars model
 DATA:	FILE IS StarWars_Mplus.csv; ! Note that this data has no first row with variable names...
-VARIABLE:	NAMES ARE Q1-Q10;
+VARIABLE:	NAMES ARE Q1-Q13; USEVARIABLES ARE Q1-Q10;
 MODEL:	
 
 ! Factor Loadings:
