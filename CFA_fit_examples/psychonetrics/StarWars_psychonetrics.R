@@ -128,3 +128,36 @@ rnm <- rnm %>% stepup
 # For more information on latent and residual network models, see:
 # Epskamp, S., Rhemtulla, M.T., & Borsboom, D. Generalized Network Psychometrics: Combining Network and Latent Variable Models 
 # (2017). Psychometrika. doi:10.1007/s11336-017-9557-x
+
+# Extra: Estimating a GGM from variance-covariance matrices
+# All psychonetrics functions (e.g., lvm, lnm, rnm...) allow input via a covariance matrix, with the "covs" and "nobs" arguments.
+# The following fits a baseline GGM network with no edges:
+S <- (nrow(Data) - 1)/ (nrow(Data)) * cov(Data[,1:10])
+ggmmod <- ggm(covs = S, nobs = nrow(Data), omega = "empty")
+
+# Run model with stepup search and pruning:
+ggmmod <- ggmmod %>% stepup(greedy=TRUE) %>% prune
+
+# Fit measures:
+ggmmod %>% fit
+
+# Plot network:
+nodeNames <- c(
+  "I am a huge Star Wars\nfan! (star what?)",
+  "I would trust this person\nwith my democracy.",
+  "I enjoyed the story of\nAnakin's early life.",
+  "The special effects in\nthis scene are awful (Battle of\nGeonosis).",
+  "I would trust this person\nwith my life.",
+  "I found Darth Vader's big\nreveal in 'Empire' one of the greatest\nmoments in movie history.",
+  "The special effects in\nthis scene are amazing (Death Star\nExplosion).",
+  "If possible, I would\ndefinitely buy this\ndroid.",
+  "The story in the Star\nWars sequels is an improvement to\nthe previous movies.",
+  "The special effects in\nthis scene are marvellous (Starkiller\nBase Firing)."
+)
+library("qgraph")
+qgraph(as.matrix(ggmmod@modelmatrices$`1`$omega), nodeNames = nodeNames, legend.cex = 0.25,
+       theme = "colorblind", layout = "spring")
+
+# We can actually compare this model statistically (note they are not nested) to the latent variable model:
+compare(original_cfa = mod1, adjusted_cfa = mod2, exploratory_ggm = ggmmod)
+# The latent variable model fits better!
