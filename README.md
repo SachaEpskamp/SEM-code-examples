@@ -1,3 +1,3 @@
-This Github page provides code and files used to examplify some SEM analyses. It accompanies some videos on my Youtube channel:
+On this page I will collect some code to facillitate SEM analysis and visualization.
 
-https://www.youtube.com/channel/UCMeLz8qEk77g7kBCHW23oNQ?view_as=subscriber
+The Star Wars dataset on this website was collected by Carolin Katzera, Charlotte Tanis, Esther Niehoff, Myrthe Veenman, & Jason Nak.
