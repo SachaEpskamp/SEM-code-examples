@@ -48,13 +48,15 @@ semPaths(fit2b,
     manifests = paste0("Q",1:10), # Names of manifests, to order them appropriatly.
     reorder = FALSE, # This disables the default reordering
     nodeNames = nodeNames, # Add a legend with node names
-    legend.cex = 0.35, # Makes the legend smaller
+    legend.cex = 0.5, # Makes the legend smaller
     rotation = 2, # Rotates the plot
     layout = "tree2", # tree layout options are "tree", "tree2", and "tree3"
     cardinal = "lat cov", # This makes the latent covariances connet at a cardinal center point
     curvePivot = TRUE, # Changes curve into rounded straight lines
     sizeMan = 4, # Size of manifest variables
-    sizeLat = 10 # Size of latent varibales
+    sizeLat = 10, # Size of latent variables
+    mar = c(2,5,2,5.5), # Figure margins
+    filetype = "pdf", width = 8, height = 6, filename = "StarWars" #  Save to PDF
     )
 
 # Some other things we can do with semPlot is do some algebra:
