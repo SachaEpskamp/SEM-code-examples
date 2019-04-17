@@ -23,13 +23,13 @@ semPaths(fit2b, "std", "est")
 # We can make this nicer. First let's define the node labels:
 nodeNames <- c(
   "I am a huge Star Wars\nfan! (star what?)",
-  "I would trust this person\nwith my democracy.",
+  "I would trust this person with\nmy democracy (Jar-Jar Binks).",
   "I enjoyed the story of\nAnakin's early life.",
   "The special effects in\nthis scene are awful (Battle of Geonosis).",
-  "I would trust this person\nwith my life.",
+  "I would trust this person\nwith my life (Han Solo).",
   "I found Darth Vader's big\nreveal in 'Empire' one of the greatest\nmoments in movie history.",
   "The special effects in\nthis scene are amazing (Death Star\nExplosion).",
-  "If possible, I would\ndefinitely buy this\ndroid.",
+  "If possible, I would definitely buy\nthis droid (BB-8).",
   "The story in the Star\nWars sequels is an improvement to\nthe previous movies.",
   "The special effects in\nthis scene are marvellous (Starkiller\nBase Firing).",
   "Prequel trilogy",
@@ -48,7 +48,7 @@ semPaths(fit2b,
     manifests = paste0("Q",1:10), # Names of manifests, to order them appropriatly.
     reorder = FALSE, # This disables the default reordering
     nodeNames = nodeNames, # Add a legend with node names
-    legend.cex = 0.25, # Makes the legend smaller
+    legend.cex = 0.35, # Makes the legend smaller
     rotation = 2, # Rotates the plot
     layout = "tree2", # tree layout options are "tree", "tree2", and "tree3"
     cardinal = "lat cov", # This makes the latent covariances connet at a cardinal center point
