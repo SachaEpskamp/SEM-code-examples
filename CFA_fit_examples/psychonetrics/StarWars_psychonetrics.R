@@ -104,7 +104,7 @@ compare(cfa = mod1, lnm = lnm)
 
 # Plot network:
 library("qgraph")
-qgraph(lnm@modelmatrices$`1`$omega_zeta, labels = latents,
+qgraph(lnm@modelmatrices[[1]]$omega_zeta, labels = latents,
        theme = "colorblind", vsize = 10)
 
 ### NOT IN THE VIDEO ###
@@ -155,7 +155,7 @@ nodeNames <- c(
   "The special effects in\nthis scene are marvellous (Starkiller\nBase Firing)."
 )
 library("qgraph")
-qgraph(as.matrix(ggmmod@modelmatrices$`1`$omega), nodeNames = nodeNames, legend.cex = 0.25,
+qgraph(as.matrix(ggmmod@modelmatrices[[1]]$omega), nodeNames = nodeNames, legend.cex = 0.25,
        theme = "colorblind", layout = "spring")
 
 # We can actually compare this model statistically (note they are not nested) to the latent variable model:
