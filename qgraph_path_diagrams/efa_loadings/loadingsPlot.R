@@ -49,10 +49,10 @@ Edgelist <- cbind(
 shape <- c(rep("ellipse",nLat),rep("rectangle",nObs))
 
 # Size1:
-size1 <-  c(rep(13,nLat),rep(25,nObs))
+size1 <-  c(rep(13,nLat),rep(30,nObs))
             
 # Size2:
-size2 <-  c(rep(13,nLat),rep(4,nObs))
+size2 <-  c(rep(13,nLat),rep(6,nObs))
 
 # Edge connect points:
 ECP <- Edgelist
@@ -71,7 +71,7 @@ manLabels <- c("irritated", "satisfied", "lonely", "anxious",
 # Size of labels:
 labelCex <- c(
   rep(2,nLat),
-  rep(1,nObs)
+  rep(1.25,nObs)
 )
 
 # Starting layout:
@@ -118,7 +118,7 @@ qgraph(Edgelist,
        vsize = size1,
        vsize2 = size2,
        layout = LayoutFinal,
-       mar = c(1,3,1,5),
+       mar = c(1,3,1,6),
        edgeConnectPoints = ECP,
        labels = c(latLabels, manLabels),
        label.scale = FALSE,
@@ -128,4 +128,4 @@ qgraph(Edgelist,
        filetype = "pdf",
        filename = "loadings",
        width = 6,
-       height = 8)
+       height = 7)
