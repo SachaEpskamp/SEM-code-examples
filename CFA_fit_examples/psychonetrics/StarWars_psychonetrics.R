@@ -1,11 +1,5 @@
 # Load packages:
 library("dplyr") # I always load this
-
-# Install psychonetrics devel version:
-library("devtools")
-install_github("sachaepskamp/psychonetrics")
-
-# Load psychonetrics:
 library("psychonetrics")
 
 # Read the data:
@@ -136,7 +130,7 @@ S <- (nrow(Data) - 1)/ (nrow(Data)) * cov(Data[,1:10])
 ggmmod <- ggm(covs = S, nobs = nrow(Data), omega = "empty")
 
 # Run model with stepup search and pruning:
-ggmmod <- ggmmod %>% stepup(greedy=TRUE) %>% prune
+ggmmod <- ggmmod %>% stepup %>% prune
 
 # Fit measures:
 ggmmod %>% fit
