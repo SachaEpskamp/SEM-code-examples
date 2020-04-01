@@ -1,8 +1,5 @@
 library("dplyr")
 library("devtools")
-
-# Install from github:
-install_github("sachaepskamp/psychonetrics")
 library("psychonetrics")
 
 # Read the data, subset of summary statistics reported by:
@@ -32,7 +29,7 @@ rownames(vars) <- c("alc","cig")
 mod <- latentgrowth(vars, covs = (321-1)/321 * covMat, means = means, nobs = 321)
 
 # Run model:
-mod <- mod %>% runmodel
+mod <- mod %>% setoptimizer("cpp_L-BFGS-B") %>% runmodel
 
 # Look at fit:
 mod
