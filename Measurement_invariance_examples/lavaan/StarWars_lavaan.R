@@ -35,7 +35,7 @@ Original =~ Q5 + Q6 + Q7 + Q1
 Sequels =~ Q8 + Q9 + Q10 + Q1
 Q4 ~~ Q10
 '
-conf <- cfa(Model, Data, group = "agegroup")
+conf <- cfa(Model, Data, group = "agegroup", std.lv=TRUE)
 
 #' Look at fit:
 conf #' P > 0.05 so we do not reject exact fit!
@@ -43,14 +43,14 @@ fitMeasures(conf) #' Looks good!
 
 #' Test for weak invariance:
 weak <- cfa(Model, Data, group = "agegroup",
-            group.equal = "loadings")
+            group.equal = "loadings", std.lv=TRUE)
 
 #' Compare groups:
 anova(conf,weak) #' Weak variance is accepted
 
 #' Test for strong invariance:
 strong <- cfa(Model, Data, group = "agegroup",
-            group.equal = c("loadings","intercepts"))
+            group.equal = c("loadings","intercepts"), std.lv=TRUE)
 
 #' Compare groups:
 anova(conf,weak, strong) #' Questionable... 
@@ -70,7 +70,7 @@ parameterEstimates(strong)[37:39,]
 #' people judge special effects on different criteria than younger people).
 strong_partial <- cfa(Model, Data, group = "agegroup",
               group.equal = c("loadings","intercepts"),
-              group.partial = "Q10 ~ 1")
+              group.partial = "Q10 ~ 1", std.lv=TRUE)
 
 #' Compare:
 anova(conf,weak, strong_partial) 
@@ -80,7 +80,7 @@ anova(conf,weak, strong_partial)
 strict <- cfa(Model, Data, group = "agegroup",
               group.equal = c("loadings","intercepts","residuals",
               "residual.covariances"),
-              group.partial = "Q10 ~ 1")
+              group.partial = "Q10 ~ 1", std.lv=TRUE)
 
 #' Compare:
 anova(conf,weak, strong_partial, strict) 
@@ -92,7 +92,7 @@ eqvars <- cfa(Model, Data, group = "agegroup",
               group.equal = c("loadings","intercepts","residuals",
                               "residual.covariances",
                               "lv.variances","lv.covariances"),
-              group.partial = "Q10 ~ 1")
+              group.partial = "Q10 ~ 1", std.lv=TRUE)
 
 
 #' Compare:
@@ -104,7 +104,7 @@ eqvars_and_means <- cfa(Model, Data, group = "agegroup",
                               "residual.covariances",
                               "lv.variances","lv.covariances",
                               "means"),
-              group.partial = "Q10 ~ 1")
+              group.partial = "Q10 ~ 1", std.lv=TRUE)
 
 #' Compare:
 anova(strict, eqvars, eqvars_and_means) 

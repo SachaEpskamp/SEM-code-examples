@@ -17,11 +17,11 @@ means <- read.csv("means_bivariate.csv")[,1]
 mod <- '
 # Alcohol:
 i_alc =~ 1*alc1 + 1*alc2 + 1*alc3 + 1*alc4
-s_alc =~ 1*alc1 + 2*alc2 + 3*alc3 + 4*alc4
+s_alc =~ 0*alc1 + 1*alc2 + 2*alc3 + 3*alc4
 
 # Cigarettes:
 i_cig =~ 1*cig1 + 1*cig2 + 1*cig3 + 1*cig4
-s_cig =~ 1*cig1 + 2*cig2 + 3*cig3 + 4*cig4
+s_cig =~ 0*cig1 + 1*cig2 + 2*cig3 + 3*cig4
 '
 
 # Fit model:

@@ -1,8 +1,5 @@
 library("dplyr")
 library("devtools")
-
-#' Install from github:
-install_github("sachaepskamp/psychonetrics")
 library("psychonetrics")
 
 #' Read the data, subset of summary statistics reported by:
@@ -43,7 +40,7 @@ mod %>% fit
 mod %>% parameters
 
 #' Latent correlations:
-cov2cor(getmatrix(mod,"sigma_zeta")[[1]])
+cov2cor(getmatrix(mod,"sigma_zeta"))
 
 #' We could also specify the model manually via lvm:
 mod_lvm <- lvm(covs = (321-1)/321 * covMat, means = means, nobs = 321,
@@ -60,10 +57,10 @@ mod_lvm <- mod_lvm %>%
   fixpar("lambda",row=4,col=2,value = 4)
 
 #' Fix intercepts:
-mod_lvm <- mod_lvm %>% fixpar("tau", row = 1:4, col = 1, value = 1)
+mod_lvm <- mod_lvm %>% fixpar("nu", row = 1:4, col = 1, value = 1)
 
 #' Free latent means:
-mod_lvm <- mod_lvm %>% freepar("tau_eta", row = 1:2, col = 1)
+mod_lvm <- mod_lvm %>% freepar("nu_eta", row = 1:2, col = 1)
 
 #' Run the model:
 mod_lvm <- mod_lvm %>% runmodel

@@ -1,4 +1,3 @@
-# devtools::install_github("sachaepskamp/psychonetrics")
 library("psychonetrics")
 library("dplyr")
 library("lavaan")
@@ -42,7 +41,7 @@ Beta <- matrix(
 mod1 <- lvm(PoliticalDemocracy, lambda = Lambda, beta = Beta)
 
 # Run model:
-mod1 <- mod1 %>% runmodel
+mod1 <- mod1 %>% runmodel(verbose=TRUE)
 
 # Look at fit:
 mod1
@@ -73,13 +72,15 @@ Sigma_epsilon[6,8] <- Sigma_epsilon[8,6] <- 1
 mod2b <- lvm(PoliticalDemocracy, lambda = Lambda, beta = Beta, sigma_epsilon = Sigma_epsilon)
 
 # Run model:
-mod2b <- mod2b %>% runmodel
+mod2b <- mod2b  %>%  runmodel
 
 # Both methods are identical:
 compare(mod2a,mod2b)
 
 # Compare to previous model:
 compare(mod1,mod2a)
+
+mod2a %>% fit
 
 # Model 3: SEM model with added residual covariances AND equality constrains (nested in model 2):
 # Again two methods, first by adjusting previous model. This uses a new function (update from Github).

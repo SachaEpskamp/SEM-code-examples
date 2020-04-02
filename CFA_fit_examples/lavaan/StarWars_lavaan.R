@@ -23,9 +23,9 @@ Data <- read.csv("StarWars.csv", sep = ",")
 # Three factor model for trilogies using lavaan:
 Model <- '
 # Factor loadings:
-Prequels =~ 1*Q2 + Q3 + Q4 + Q1
-Original =~ 1*Q5 + Q6 + Q7 + Q1
-Sequels =~ 1*Q8 + Q9 + Q10 + Q1
+Prequels =~ Q1 + Q2 + Q3 + Q4 
+Original =~ Q1 + Q5 + Q6 + Q7
+Sequels =~ Q1 + Q8 + Q9 + Q10
 
 # Reisdual variances:
 Q1 ~~ Q1
@@ -40,12 +40,12 @@ Q9 ~~ Q9
 Q10 ~~ Q10
 
 # Factor variances / covariances:
-Prequels ~~ Prequels
+Prequels ~~ 1*Prequels # Scaling (alternative is constraining a factor loading to 1)
 Prequels ~~ Original
 Prequels ~~ Sequels
-Original ~~ Original
+Original ~~ 1*Original # Scaling
 Original ~~ Sequels
-Sequels ~~ Sequels
+Sequels ~~ 1*Sequels # Scaling
 '
 
 # Fit model in lavaan:
@@ -56,16 +56,19 @@ fit
 
 # We can do this easier with the cfa function!
 Model <- '
-Prequels =~ Q2 + Q3 + Q4 + Q1
-Original =~ Q5 + Q6 + Q7 + Q1
-Sequels =~ Q8 + Q9 + Q10 + Q1
+Prequels =~ Q1 + Q2 + Q3 + Q4
+Original =~ Q1 + Q5 + Q6 + Q7
+Sequels =~ Q1 + Q8 + Q9 + Q10
 '
 
 # Fit in lavaan:
-fit <- cfa(Model, Data) # Automatically sets first factor loading to 1. Use std.lv = TRUE for latent variable variance scaling!
+fit <- cfa(Model, Data, std.lv=TRUE) # Automatically sets first factor loading to 1. Use std.lv = TRUE for latent variable variance scaling!
 
 # Look at fit:
 fit
+
+# Look at parameters:
+parameterEstimates(fit)
 
 # Let's look at the top 10 modification indices:
 modificationindices(fit) %>% arrange(-mi) %>% head(10) # These are some dplyr tricks
@@ -79,7 +82,7 @@ Q4 ~~ Q10
 '
 
 # Fit in lavaan:
-fit2 <- cfa(Model2, Data) # Automatically sets first factor loading to 1. Use std.lv = TRUE for latent variable variance scaling!
+fit2 <- cfa(Model2, Data, std.lv=TRUE) # Automatically sets first factor loading to 1. Use std.lv = TRUE for latent variable variance scaling!
 
 # Compare fit:
 anova(fit,fit2)
@@ -87,23 +90,17 @@ anova(fit,fit2)
 # However, we could make a good argument *not* to add this parameter, as the model
 # already fit well and the previous model was *theoretical*.
 
-# Let's fit the model using scaling in latent variable variance, it makes raw parameters a bit easier to interpret:
-fit2b <- cfa(Model2, Data, std.lv=TRUE)
-
-# It is the same model:
-anova(fit2,fit2b)
-
 # look at the parameter estimates:
-parameterestimates(fit2b)
+parameterestimates(fit2)
 
 # Some things to note: the star wars fandom questionary only strongly loads on the original factor, and relatively low correlations with the prequel trilogy
 
 # Look at fit measures:
-fitMeasures(fit2b) # All really good!
+fitMeasures(fit2) # All really good!
 
 # Finally, we could also fit the model using only the covariances!
 covMat <- cov(Data[,1:10])
-fit2c <- cfa(Model2, sample.cov = covMat, sample.nobs = nrow(Data))
+fit2b <- cfa(Model2, sample.cov = covMat, sample.nobs = nrow(Data), std.lv=TRUE)
 
 # Gives the same mode:
-anova(fit2b, fit2c)
+anova(fit2, fit2b)

@@ -1,11 +1,5 @@
 #' Load packages:
 library("dplyr") 
-
-#' Install psychonetrics devel version:
-library("devtools")
-install_github("sachaepskamp/psychonetrics")
-
-#' Load psychonetrics:
 library("psychonetrics")
 
 #' Read the data:
@@ -74,7 +68,7 @@ mod_weak <- mod_configural %>% groupequal("lambda") %>% runmodel
 compare(configural = mod_configural, weak = mod_weak)
 
 #' weak invariance can be accepted, let's try strong:
-mod_strong <- mod_weak %>% groupequal("tau") %>% runmodel
+mod_strong <- mod_weak %>% groupequal("nu") %>% runmodel
 #' Means are automatically identified
 
 #' Compare models:
@@ -82,13 +76,13 @@ compare(configural = mod_configural, weak = mod_weak, strong = mod_strong)
 
 #' Questionable p-value and AIC difference, but ok BIC difference. This is quite good, but let's take a look.
 #' I have not yet implemented LM tests for equality constrains, but we can loko at something called "equality-free" MIs:
-mod_strong %>% MIs(matrices = "tau", type = "free")
+mod_strong %>% MIs(matrices = "nu", type = "free")
 
 #' Indicates that Q10 would improve fit. We can also look at residuals:
 residuals(mod_strong)
 
 #' Let's try freeing intercept 10:
-mod_strong_partial <- mod_strong %>% groupfree("tau",10) %>% runmodel
+mod_strong_partial <- mod_strong %>% groupfree("nu",10) %>% runmodel
 
 #' Compare all models:
 compare(configural = mod_configural,
@@ -97,7 +91,7 @@ compare(configural = mod_configural,
         strong_partial = mod_strong_partial)
 
 #' This seems worth it and lead to an acceptable model! It seems that older people find the latest special effects more marvellous!
-mod_strong_partial %>% getmatrix("tau")
+mod_strong_partial %>% getmatrix("nu")
 
 #' Now let's investigate strict invariance:
 mod_strict <- mod_strong_partial %>% groupequal("sigma_epsilon") %>% runmodel
@@ -116,28 +110,28 @@ mod_eqvar <- mod_strict %>% groupequal("sigma_zeta") %>% runmodel
 #' Compare:
 compare(strict = mod_strict, eqvar = mod_eqvar) 
 
-#' This is acceptable. What about the means? (alpha = tau_eta)
-mod_eqmeans <- mod_eqvar %>% groupequal("tau_eta") %>% runmodel
+#' This is acceptable. What about the means? (alpha = nu_eta)
+mod_eqmeans <- mod_eqvar %>% groupequal("nu_eta") %>% runmodel
 
 #' Compare:
 compare(eqvar = mod_eqvar, eqmeans = mod_eqmeans)
 
 #' Rejected! We could look at MIs again:
-mod_eqmeans %>% MIs(matrices = "tau_eta", type = "free")
+mod_eqmeans %>% MIs(matrices = "nu_eta", type = "free")
 
 #' Indicates the strongest effect for prequels. Let's see what happens:
-eqmeans2 <- mod_eqvar %>% groupequal("tau_eta",row = c("Original","Sequels")) %>% runmodel
+eqmeans2 <- mod_eqvar %>% groupequal("nu_eta",row = c("Original","Sequels")) %>% runmodel
 
 #' Compare:
 compare(eqvar = mod_eqvar, eqmeans = eqmeans2)
 #' Questionable, what about the sequels as well?
 
-eqmeans3 <- mod_eqvar %>% groupequal("tau_eta", row = "Original") %>% runmodel
+eqmeans3 <- mod_eqvar %>% groupequal("nu_eta", row = "Original") %>% runmodel
 
 #' Compare:
 compare(eqvar = mod_eqvar, eqmeans = eqmeans3)
 
 #' Still questionable.. Let's look at the mean differences:
-mod_eqvar %>% getmatrix("tau_eta")
+mod_eqvar %>% getmatrix("nu_eta")
 
 #' Looks like people over 30 like the prequels better and the other two trilogies less!

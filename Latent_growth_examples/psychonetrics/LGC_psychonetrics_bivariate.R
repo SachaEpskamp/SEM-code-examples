@@ -26,10 +26,13 @@ rownames(vars) <- c("alc","cig")
 # Form model (note I rescale the cov matrix here manually to max likelihood estimate):
 # If you have raw data you can ignore the argument covs, means and nobs and use
 # the argument "data" instead"
-mod <- latentgrowth(vars, covs = (321-1)/321 * covMat, means = means, nobs = 321)
+mod <- latentgrowth(vars, covs = covMat, means = means, nobs = 321)
 
 # Run model:
-mod <- mod %>% setoptimizer("cpp_L-BFGS-B") %>% runmodel
+mod <- mod %>% runmodel
+
+
+mod %>% parameters
 
 # Look at fit:
 mod

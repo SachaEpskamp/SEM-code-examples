@@ -13,9 +13,9 @@ PoliticalDemocracy
 # Model 1: standard SEM model without equality constraints and residual covariances:
 model1 <- ' 
 # latent variable definitions
-ind60 =~ x1 + x2 + x3
 dem60 =~ y1 + y2 + y3 + y4
 dem65 =~ y5 + y6 + y7 + y8
+ind60 =~ x1 + x2 + x3
 
 # regressions
 dem60 ~ ind60

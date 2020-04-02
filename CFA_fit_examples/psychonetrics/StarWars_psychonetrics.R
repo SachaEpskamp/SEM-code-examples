@@ -155,3 +155,4 @@ qgraph(as.matrix(ggmmod@modelmatrices[[1]]$omega), nodeNames = nodeNames, legend
 # We can actually compare this model statistically (note they are not nested) to the latent variable model:
 compare(original_cfa = mod1, adjusted_cfa = mod2, exploratory_ggm = ggmmod)
 # The latent variable model fits better!
+
