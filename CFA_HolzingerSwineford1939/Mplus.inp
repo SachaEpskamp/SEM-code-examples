@@ -1,0 +1,26 @@
+TITLE: Your title goes here
+DATA: FILE = "E:/Github/SEM-code-examples/HolzingerSwineford1939.dat";
+VARIABLE: 
+    NAMES = x1 x2 x3 x4 x5 x6 x7 x8 x9; 
+    MISSING=.;
+MODEL:
+    ! Factor loadings:
+    visual  BY x1@1 x2 x3;
+    textual BY x4@1 x5 x6;
+    speed   BY x7@1 x8 x9;
+
+    ! Factor variances:
+    visual WITH visual textual speed;
+    textual WITH visual textual speed;
+    speed WITH visual textual speed;
+    
+    ! Residual variances:
+    x1 WITH x1;
+    x2 WITH x2;
+    x3 WITH x3;
+    x4 WITH x4;
+    x5 WITH x5;
+    x6 WITH x6;
+    x7 WITH x7;
+    x8 WITH x8;
+    x9 WITH x9;

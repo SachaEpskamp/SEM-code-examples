@@ -1,0 +1,60 @@
+VERSION 1.1.0
+INPUT
+TITLE:
+ Your title goes here
+DATA:
+ FILE = "E:/Github/SEM-code-examples/HolzingerSwineford1939.dat";
+VARIABLE:
+    NAMES = x1 x2 x3 x4 x5 x6 x7 x8 x9;
+    MISSING=.;
+MODEL:
+    visual  BY x1 x2 x3;
+    textual BY x4 x5 x6;
+    speed   BY x7 x8 x9;
+INPUT_END
+2
+0
+0
+0
+ML
+1
+GENERAL
+0
+9
+3
+0
+x1 x2 x3 x4 x5 x6 x7 x8 x9 visual textual speed
+1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 0 0 0
+0
+3
+visual
+x1 x2 x3
+textual
+x4 x5 x6
+speed
+x7 x8 x9
+1 1 visual x1    1.000    0.000
+1 1 visual x2    0.553    0.109
+1 1 visual x3    0.729    0.117
+1 1 textual x4    1.000    0.000
+1 1 textual x5    1.113    0.065
+1 1 textual x6    0.926    0.056
+1 1 speed x7    1.000    0.000
+1 1 speed x8    1.180    0.150
+1 1 speed x9    1.082    0.195
+2 1 textual visual    0.408    0.080
+2 1 speed visual    0.262    0.055
+2 1 speed textual    0.173    0.049
+4 1 x1    0.549    0.119
+4 1 x2    1.134    0.104
+4 1 x3    0.844    0.095
+4 1 x4    0.371    0.048
+4 1 x5    0.446    0.058
+4 1 x6    0.356    0.043
+4 1 x7    0.799    0.088
+4 1 x8    0.488    0.092
+4 1 x9    0.566    0.091
+5 1 visual    0.809    0.150
+5 1 textual    0.979    0.112
+5 1 speed    0.384    0.092
